@@ -1,0 +1,57 @@
+/* Create table about the people here */
+CREATE TABLE movie_stars (ID integer, NAME text, AGE integer, GENDER text);
+INSERT INTO movie_stars VALUES (1,"Angelina Jolie", 52, "F");
+INSERT INTO movie_stars VALUES (2, "Brad Pitt", 60, "M");
+INSERT INTO movie_stars VALUES (3, "Cameron Diaz", 45, "F");
+INSERT INTO movie_stars VALUES (4, "Joel Madden", 40, "M");
+INSERT INTO movie_stars VALUES (5, "Leslie Mann", 49, "F");
+INSERT INTO movie_stars VALUES (6, "Paul Rudd", 50, "M");
+INSERT INTO movie_stars VALUES (7, "Jennifer Lawrence", 35, "F");
+INSERT INTO movie_stars VALUES (8, "Chris Hemsworth", 46, "M");
+SELECT * FROM movie_stars
+ORDER BY gender;
+
+CREATE TABLE movies (ID integer, TITLE text, RELEASED integer);
+INSERT INTO movies VALUES (1, "Mr. and Mrs.Smith", 2007);
+INSERT INTO movies VALUES (2, "Mr. and Mrs.Smith", 2007);
+INSERT INTO movies VALUES (3, "Shrek", 2003);
+INSERT INTO movies VALUES (4, "Raise Your Voice", 2010);
+INSERT INTO movies VALUES (5, "Best Man", 2003);
+INSERT INTO movies VALUES (6, "Marvels", 2014);
+INSERT INTO movies VALUES (7, "Hunger Games", 2014);
+INSERT INTO movies VALUES (8, "Marvels", 2014);
+
+CREATE TABLE charity_donations (ID integer, CHARITY text, DONATION integer);
+INSERT INTO charity_donations VALUES (1, "Domestic Violence Relief", 1000000);
+INSERT INTO charity_donations VALUES (2, "Uplift Black Voices", 3000000);
+INSERT INTO charity_donations VALUES (3, "Planned Parenthood", 500000);
+INSERT INTO charity_donations VALUES (4, "Music for Kids", 200000);
+INSERT INTO charity_donations VALUES (5, "Planned Parenthood", 600000);
+INSERT INTO charity_donations VALUES (6, "Domestic Violence Relief", 2000000);
+INSERT INTO charity_donations VALUES (7, "Planned Parenthood", 2000000);
+INSERT INTO charity_donations VALUES (8, "Alzheimers Research", 10000000);
+
+SELECT movie_stars.name, movies.title
+FROM movies
+JOIN movie_stars
+ON movie_stars.id = movies.id;
+
+SELECT age, name FROM movie_stars 
+GROUP BY name
+HAVING gender = "F"
+ORDER BY age asc;
+SELECT * FROM movies;
+
+SELECT movie_stars.name, charity_donations.charity, charity_donations.donation
+FROM charity_donations
+JOIN movie_stars
+ON movie_stars.id = charity_donations.id
+ORDER BY charity_donations.donation asc;
+
+
+I created three tables: Movie Stars (table 1), Movies (table 2), and Charity Donations (table 3). All three included an ID to connect the rows from each table to each other.
+I created a query conjoining the movie stars names and the movie titles from the first two tables, to show the name of the movie star next to the movie they starred in.
+I next created a query to show only the movie stars who were Female, along with their age in ascending order.
+Next, I created a query conjoining rows from the first and last table, to show the name of the movie star next to the charity they donated to, next to how much they donated. 
+**Note - The data I compiled was not taken from any sources, I fictionalized it. 
+
